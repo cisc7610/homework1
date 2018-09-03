@@ -1,5 +1,5 @@
 # Homework 1: SQLite database of image analysis from Google Cloud Vision API
-### Due: September 17, 2018
+### Due: September 25, 2018
 ### Prof Michael Mandel `mim@sci.brooklyn.cuny.edu`
 
 For this assignment, you will be interacting with a set of JSON documents in 
