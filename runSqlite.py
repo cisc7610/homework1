@@ -24,11 +24,33 @@ def createSchema(dbFile, clearDb=True):
     connection = apsw.Connection(dbFile)
     cursor = connection.cursor()
 
+    # Create image table
     if clearDb:
         cursor.execute("DROP TABLE IF EXISTS image;")
-
     cursor.execute("CREATE TABLE image (id integer PRIMARY KEY, "
                    "url varchar(256), isDocument int(1));")
+
+    # TODO: create label table
+
+    # TODO: create page table
+
+    # TODO: create landmark table
+
+    # TODO: create location table
+
+    # TODO: create webEntity table
+
+    # TODO: create image_tagged_label table
+
+    # TODO: create image_in_page table
+
+    # TODO: create image_matches_image table
+
+    # TODO: create image_contains_landmark table
+
+    # TODO: create image_tagged_webEntity table
+
+    # TODO: create landmark_located_at_location table
     
     
 def populateSqlite(jsonDir, dbFile):
@@ -107,67 +129,67 @@ def querySqlite(dbFile):
     connection = apsw.Connection(dbFile)
     cursor = connection.cursor()
 
-    # 7.0. Count the total number of images in the database
-    query_7_0 = """
+    # 0. Count the total number of images in the database
+    query_0 = """
     SELECT COUNT(*) FROM image;
     """
-    querySqliteAndPrintResults(query_7_0, cursor, title="Query 7.0")
+    querySqliteAndPrintResults(query_0, cursor, title="Query 0")
     
-    # TODO: 7.1. Count the total number of JSON documents in the database
-    query_7_1 = """
+    # TODO: 1. Count the total number of JSON documents in the database
+    query_1 = """
     """
-    querySqliteAndPrintResults(query_7_1, cursor, title="Query 7.1")
+    querySqliteAndPrintResults(query_1, cursor, title="Query 1")
 
-    # TODO: 7.2. Count the total number of Images, Labels, Landmarks,
+    # TODO: 2. Count the total number of Images, Labels, Landmarks,
     # Locations, Logos, Pages, and WebEntity:s in the database.
-    query_7_2 = """
+    query_2 = """
     """
-    querySqliteAndPrintResults(query_7_2, cursor, title="Query 7.2")
+    querySqliteAndPrintResults(query_2, cursor, title="Query 2")
 
-    # TODO: 7.3. List all of the Images that are associated with the
+    # TODO: 3. List all of the Images that are associated with the
     # Label with an id of "/m/015kr" (which has the description
     # "bridge") ordered alphabetically by URL
-    query_7_3 = """
+    query_3 = """
     """
-    querySqliteAndPrintResults(query_7_3, cursor, title="Query 7.3")
+    querySqliteAndPrintResults(query_3, cursor, title="Query 3")
 
-    # TODO: 7.4. List the 10 most frequent WebEntitys that are applied
+    # TODO: 4. List the 10 most frequent WebEntitys that are applied
     # to the same Images as the Label with an id of "/m/015kr" (which
     # has the description "bridge"). Order them by the number of times
     # they appear followed by their entityId alphabetically
-    query_7_4 = """
+    query_4 = """
     """
-    querySqliteAndPrintResults(query_7_4, cursor, title="Query 7.4")
+    querySqliteAndPrintResults(query_4, cursor, title="Query 4")
 
-    # TODO: 7.5. Find Images associated with Landmarks that are not
+    # TODO: 5. Find Images associated with Landmarks that are not
     # "New York" (id "/m/059rby") or "New York City" (id "/m/02nd_")
     # ordered by image URL alphabetically.
-    query_7_5 = """
+    query_5 = """
     """
-    querySqliteAndPrintResults(query_7_5, cursor, title="Query 7.5")
+    querySqliteAndPrintResults(query_5, cursor, title="Query 5")
 
-    # TODO: 7.6. List the 10 Labels that have been applied to the most
+    # TODO: 6. List the 10 Labels that have been applied to the most
     # Images along with the number of Images each has been applied to
-    query_7_6 = """
+    query_6 = """
     """
-    querySqliteAndPrintResults(query_7_6, cursor, title="Query 7.6")
+    querySqliteAndPrintResults(query_6, cursor, title="Query 6")
 
-    # TODO: 7.7. List the 50 Images that are linked to the most Pages
+    # TODO: 7. List the 50 Images that are linked to the most Pages
     # through the webEntities.pagesWithMatchingImages JSON property
     # along with the number of Pages linked to each one.
-    query_7_7 = """
+    query_7 = """
     """
-    querySqliteAndPrintResults(query_7_7, cursor, title="Query 7.7")
+    querySqliteAndPrintResults(query_7, cursor, title="Query 7")
 
-    # TODO: 7.8. List the 10 pairs of Images that appear on the most
+    # TODO: 8. List the 10 pairs of Images that appear on the most
     # Pages together through the webEntities.pagesWithMatchingImages
     # JSON property. Order them by the number of pages that they
     # appear on together, then by the URL of the first. Make sure that
     # each pair is only listed once regardless of which is first and
     # which is second.
-    query_7_8 = """
+    query_8 = """
     """
-    querySqliteAndPrintResults(query_7_8, cursor, title="Query 7.8")
+    querySqliteAndPrintResults(query_8, cursor, title="Query 8")
 
 
 def querySqliteAndPrintResults(query, cursor, title="Running query:"):
