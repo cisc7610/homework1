@@ -104,8 +104,8 @@ to query the database.  The queries should be as follows:
     "bridge") ordered alphabetically by URL
  4. List the 10 most frequent WebEntitys that are applied
     to the same Images as the Label with an id of "/m/015kr" (which
-    has the description "bridge"). Order them by the number of times
-    they appear followed by their entityId alphabetically
+    has the description "bridge"). List them in descending order of the number of times
+    they appear, followed by their entityId alphabetically
  5. Find Images associated with Landmarks that are not
     "New York" (id "/m/059rby") or "New York City" (id "/m/02nd_")
     ordered by image URL alphabetically.
@@ -116,7 +116,7 @@ to query the database.  The queries should be as follows:
     along with the number of Pages linked to each one.
  8. List the 10 pairs of Images that appear on the most
     Pages together through the webEntities.pagesWithMatchingImages
-    JSON property. Order them by the number of pages that they
+    JSON property. List them in descending order of the number of pages that they
     appear on together, then by the URL of the first. Make sure that
     each pair is only listed once regardless of which is first and
     which is second.
