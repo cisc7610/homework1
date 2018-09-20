@@ -98,7 +98,7 @@ You should use the supplied [`querySqliteAndPrintResults()`](https://github.com/
 to query the database.  The queries should be as follows:
  1. Count the total number of JSON documents in the database
  2. Count the total number of Images, Labels, Landmarks,
-    Locations, Logos, Pages, and WebEntity:s in the database.
+    Locations, Pages, and WebEntity:s in the database.
  3. List all of the Images that are associated with the
     Label with an id of "/m/015kr" (which has the description
     "bridge") ordered alphabetically by URL

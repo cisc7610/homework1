@@ -141,7 +141,7 @@ def querySqlite(dbFile):
     querySqliteAndPrintResults(query_1, cursor, title="Query 1")
 
     # TODO: 2. Count the total number of Images, Labels, Landmarks,
-    # Locations, Logos, Pages, and WebEntity:s in the database.
+    # Locations, Pages, and WebEntity:s in the database.
     query_2 = """
     """
     querySqliteAndPrintResults(query_2, cursor, title="Query 2")
