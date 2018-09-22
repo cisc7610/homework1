@@ -90,6 +90,19 @@ You may want to use the helper function [`getOrCreateRow()`](https://github.com/
 This function returns the ID of a tuple with the attributes provided in a dictionary.  If such a tuple exists, it is returned,
 if it does not exist, it is created.  This will ensure that you do not duplicate entries like `Labels` and `WebEntities`.
 
+If your code is working properly, you should get the following counts of rows in each entity table:
+
+| Entity | Count |
+| ------ | -----:|
+| image | 560 |
+| label | 201 |
+| page | 556 |
+| landmark | 18 |
+| location | 26 |
+| webEntity | 451 |
+
+
+
 
 ## Write code to query the database
 
