@@ -141,14 +141,15 @@ def querySqlite(dbFile):
     querySqliteAndPrintResults(query_1, cursor, title="Query 1")
 
     # TODO: 2. Count the total number of Images, Labels, Landmarks,
-    # Locations, Pages, and WebEntity:s in the database.
+    # Locations, Pages, and WebEntity's in the database.
     query_2 = """
     """
     querySqliteAndPrintResults(query_2, cursor, title="Query 2")
 
     # TODO: 3. List all of the Images that are associated with the
     # Label with an id of "/m/015kr" (which has the description
-    # "bridge") ordered alphabetically by URL
+    # "bridge") ordered by the score of the association between them
+    # from highest to lowest
     query_3 = """
     """
     querySqliteAndPrintResults(query_3, cursor, title="Query 3")
@@ -162,9 +163,10 @@ def querySqlite(dbFile):
     """
     querySqliteAndPrintResults(query_4, cursor, title="Query 4")
 
-    # TODO: 5. Find Images associated with Landmarks that are not
-    # "New York" (id "/m/059rby") or "New York City" (id "/m/02nd_")
-    # ordered by image URL alphabetically.
+    # TODO: 5. Find Images associated with Landmarks that are not "New
+    # York" (id "/m/059rby") or "New York City" (id "/m/02nd ")
+    # ordered alphabetically by landmark description and then by image
+    # URL.
     query_5 = """
     """
     querySqliteAndPrintResults(query_5, cursor, title="Query 5")
@@ -175,9 +177,10 @@ def querySqlite(dbFile):
     """
     querySqliteAndPrintResults(query_6, cursor, title="Query 6")
 
-    # TODO: 7. List the 50 Images that are linked to the most Pages
+    # TODO: 7. List the 10 Pages that are linked to the most Images
     # through the webEntities.pagesWithMatchingImages JSON property
-    # along with the number of Pages linked to each one.
+    # along with the number of Images linked to each one. Sort them by
+    # count (descending) and then by page URL.
     query_7 = """
     """
     querySqliteAndPrintResults(query_7, cursor, title="Query 7")
