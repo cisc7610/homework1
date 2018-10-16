@@ -17,12 +17,14 @@ report describing your approach.
 SQLite is a light-weight SQL-compliant database that stores all of its data in a
 single regular file.
 
-1. Download and install the SQLite “Precompiled binaries” for your platform
+1. Download and install the SQLite "Precompiled binaries" for your platform
    from https://www.sqlite.org/download.html
 1. Download and install drives for SQLite in your programming language of
    choice. For python, apsw works well: https://rogerbinns.github.io/apsw/
    
 ## Introduction to the data
+
+I have already collected the images and run them through the google cloud vision API.  You can find the resulting JSON documents in this repository in the [`data/json/`](https://github.com/cisc7610/homework1/blob/master/data/json/) directory.  The images themselves are also in this repository in the [`data/jpg/`](https://github.com/cisc7610/homework1/blob/master/data/jpg/) directory, although you don't need to do anything with them.
 
 The file `exampleJson.txt` contains
 a JSON document that has all of the fields that may be present in the
@@ -135,7 +137,7 @@ to query the database.  The queries should be as follows:
     which is second.
     
 
-## Update this file with a description of your approach and code (here)
+## Update this file (README.md) with a description of your approach and code
 
  1. Describe the language that you implemented your code in
  2. Include instructions for how to run your code to populate the database
