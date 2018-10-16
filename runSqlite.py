@@ -10,19 +10,27 @@ import os.path
 
 dataDir = "data/"
 jsonDir = os.path.join(dataDir, "json")
-dbFile = os.path.join(dataDir, 'sqlite.db')
 
-def main():
-    createSchema(dbFile)
-    populateSqlite(jsonDir, dbFile)
-    querySqlite(dbFile)
+write_to_disk = True  # Set to False for fast testing
+if write_to_disk:
+    # This is slow but persistent
+    dbFile = os.path.join(dataDir, 'sqlite.db')
+else:
+    # This is fast but transient
+    dbFile = ":memory:"
 
-
-def createSchema(dbFile, clearDb=True):
-    "Create necessary tables in the sqlite database"
     
+def main():
     connection = apsw.Connection(dbFile)
     cursor = connection.cursor()
+    createSchema(cursor)
+    populateSqlite(jsonDir, cursor)
+    querySqlite(cursor)
+    connection.close()
+
+
+def createSchema(cursor, clearDb=True):
+    "Create necessary tables in the sqlite database"
 
     # Create image table
     if clearDb:
@@ -53,28 +61,23 @@ def createSchema(dbFile, clearDb=True):
     # TODO: create landmark_located_at_location table
     
     
-def populateSqlite(jsonDir, dbFile):
+def populateSqlite(jsonDir, cursor):
     "Load the JSON results from google into sqlite. Assumes schema already created."
-
-    connection = apsw.Connection(dbFile)
-    cursor = connection.cursor()
 
     loaded = 0
     for jsonFile in glob.glob(os.path.join(jsonDir, '*.json')):
-        print("Loading", jsonFile, "into sqlite")
+        print("\n\nLoading", jsonFile, "into sqlite")
         with open(jsonFile) as jf:
             jsonData = json.load(jf)
             insertImage(cursor, jsonData)
             loaded += 1
-
-    connection.close()
 
     print("\nLoaded", loaded, "JSON documents into Sqlite\n")
 
 
 def insertImage(cursor, jsonData):
     imageId = getOrCreateRow(cursor, 'image', {'url': jsonData['url']})
-    print(imageId)
+	print("Inserting Image With ID", imageId)
 
     # TODO: update isDocument attribute of image
 
@@ -123,11 +126,8 @@ def getOrCreateRow(cursor, table, dataDict):
     raise Exception("Something went wrong with " + str(dataDict))
 
 
-def querySqlite(dbFile):
+def querySqlite(cursor):
     "Run necessary queries and print results"
-    
-    connection = apsw.Connection(dbFile)
-    cursor = connection.cursor()
 
     # 0. Count the total number of images in the database
     query_0 = """
