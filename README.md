@@ -2,6 +2,8 @@
 ### Due: September 25, 2018
 ### Prof Michael Mandel `mim@sci.brooklyn.cuny.edu`
 
+## Introduction
+
 For this assignment, you will be interacting with a set of JSON documents in 
 SQLite. The JSON documents are the output of the Google Cloud Vision API applied 
 to images returned from a Flickr API query for interesting images related
@@ -12,7 +14,7 @@ of your choice (Python, Java, Bash, etc) to load the JSON into the database
 and query it. You will submit your code, the output of your queries, and a brief
 report describing your approach.
 
-## Install and setup SQLite
+### Install and setup SQLite
 
 SQLite is a light-weight SQL-compliant database that stores all of its data in a
 single regular file.
@@ -22,7 +24,7 @@ single regular file.
 1. Download and install drives for SQLite in your programming language of
    choice. For python, apsw works well: https://rogerbinns.github.io/apsw/
    
-## Introduction to the data
+### Introduction to the data
 
 I have already collected the images and run them through the google cloud vision API.  You can find the resulting JSON documents in this repository in the [`data/json/`](https://github.com/cisc7610/homework1/blob/master/data/json/) directory.  The images themselves are also in this repository in the [`data/jpg/`](https://github.com/cisc7610/homework1/blob/master/data/jpg/) directory, although you don't need to do anything with them.
 
@@ -52,7 +54,7 @@ I have only included the following subset of those annotations, however:
    images that are similar. This will add `WebEntity`, `Page`, and `Image`
    entities to the schema.
    
-## Introduction to code   
+### Introduction to code   
 
 All of the python code is contained in the file [`runSqlite.py`](https://github.com/cisc7610/homework1/blob/master/runSqlite.py).
 If you have all of the necessary dependencies installed, you should be able to run the script as it is to 
@@ -70,7 +72,12 @@ Query 7.0
     100
 ```
 
-## Write code to create the database tables
+
+## Tasks
+
+To complete the assignment, perform the following tasks
+
+### Write code to create the database tables
 
 Implement the missing TODO entries in the [`createSchema()`](https://github.com/cisc7610/homework1/blob/master/runSqlite.py#L21)
 function.  The schema should follow the above entity-relationship diagram.
@@ -82,7 +89,7 @@ The meaning of most of the fields should be fairly clear, but there are two that
    `webDetection.fullMatchingImages` and `"partial"` if it appears in `webDetection.partialMatchingImages`
 
 
-## Write code to import the data
+### Write code to import the data
 
 Implement the missing TODO entries in the [`insertImage` method](https://github.com/cisc7610/homework1/blob/master/runSqlite.py#L53)
 function.  `insertImage()` is called with the JSON from the analysis of a single image by Google Cloud Vision API.
@@ -106,7 +113,7 @@ If your code is working properly, you should get the following counts of rows in
 
 
 
-## Write code to query the database
+### Write code to query the database
 
 Implement the missing TODO entries in the [`querySqlite()`](https://github.com/cisc7610/homework1/blob/master/runSqlite.py#L104) function.
 You should use the supplied [`querySqliteAndPrintResults()`](https://github.com/cisc7610/homework1/blob/master/runSqlite.py#L173) function
@@ -137,7 +144,7 @@ to query the database.  The queries should be as follows:
     which is second.
     
 
-## Update this file (README.md) with a description of your approach and code
+### Update this file (README.md) with a description of your approach and code
 
  1. Describe the language that you implemented your code in
  2. Include instructions for how to run your code to populate the database
